@@ -13,7 +13,6 @@ START_DATE="${7}"
 END_DATE="${8}"
 OUTPUT_FILE="${9}"
 OUTPUT_FILE="$(echo "$OUTPUT_FILE" | xargs)"
-echo "Output file: '$OUTPUT_FILE'"
 
 cm_xmin=`echo " ${MIN_LON} - 0.1" | bc`
 cm_ymin=`echo " ${MIN_LAT} - 0.1" | bc`
@@ -21,6 +20,8 @@ cm_xmax=`echo " ${MAX_LON} + 0.1" | bc`
 cm_ymax=`echo " ${MAX_LAT} + 0.1" | bc`
 
 TMP_FILE="${OUTPUT_FILE}.nc"
+
+copernicusmarine login --username "$CMEMS_USERNAME" --password "$CMEMS_PASSWORD" --force-overwrite
 
 copernicusmarine subset \
 	    --dataset-id "$DATASET_ID" \

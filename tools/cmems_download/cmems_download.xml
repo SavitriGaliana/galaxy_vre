@@ -6,24 +6,13 @@
         <requirement type="package">boto3</requirement>
         <requirement type="package">botocore</requirement>
         <requirement type="package">bash</requirement>
+        <credentials name="copernicus_marine" version="1.0">
+            <variable name="username" inject_as_env="CMEMS_USERNAME" />
+            <secret name="password" inject_as_env="CMEMS_PASSWORD" />
+        </credentials>
     </requirements>
 
-    <configfiles>
-        <configfile name="cmems_credentials">
-#import os
-#set $cmems_username = "mkonkol"
-#set $cmems_password = "Ehrenmann87!"
-#if $cmems_username == "" or $cmems_password == ""
-    #set $cmems_username = os.getenv('CMEMS_USERNAME', '')
-    #set $cmems_password = os.getenv('CMEMS_PASSWORD', '')
-#end if
-export CMEMS_USERNAME='$cmems_username'
-export CMEMS_PASSWORD='$cmems_password'
-        </configfile>
-    </configfiles>
-
     <command detect_errors="exit_code"><![CDATA[
-        bash "$cmems_credentials" &&
         bash "$__tool_directory__/cmems_download.sh" \
             "$min_lat" "$max_lat" \
             "$min_lon" "$max_lon" \
@@ -47,10 +36,10 @@ export CMEMS_PASSWORD='$cmems_password'
         <data name="output" label="Copernicus marine data" format="netcdf"/>
     </outputs>
 
-<help><![CDATA[
-	This tool downloads data subsets from the **Copernicus Marine Service (CMEMS)** using
-	the **Copernicus Marine Toolbox v2.0, to give later as input to the AquaINFRA marine model.
+    <help><![CDATA[
+        This tool downloads data subsets from the **Copernicus Marine Service (CMEMS)** using
+        the **Copernicus Marine Toolbox v2.0, to give later as input to the AquaINFRA marine model.
 
-	Output is a NetCDF (.nc) file.
+        Output is a NetCDF (.nc) file.
 	]]></help>
 </tool>
