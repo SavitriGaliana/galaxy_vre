@@ -1,4 +1,4 @@
-<tool id="cmems_download_ic_bc" name="Copernicus Downloader for AquaINFRA marine model" version="1.0.0">
+<tool id="cmems_download_ic_bc" name="Copernicus CMEMS Downloader for AquaINFRA marine model" version="1.0.0">
 	<description>Download data from the Copernicus Marine Service to provide as input to the AquaINFRA marine model. Products: Mediterranean Sea Physics Analysis and Forecast or Mediterranean Sea Physics Reanalysis, depending on the selected temporal period.</description>
 
 	<requirements>
@@ -50,7 +50,15 @@
 	</outputs>	
 
 	<help><![CDATA[
-		This tool downloads data subsets from the **Copernicus Marine Service (CMEMS)** using the **Copernicus Marine Toolbox v2.0, to give later as input to the AquaINFRA marine model.
+		This tool downloads data subsets from the **Copernicus Marine Service (CMEMS)** using the **Copernicus Marine Toolbox** v2.0, to give later as input to the AquaINFRA marine model.
+
+		### Requirements
+
+                To use this tool, users must:
+
+			- Have a valid account on the Copernicus Marine Service: https://marine.copernicus.eu
+		
+		### Outputs
 
 		Outputs are a zip file containing different NetCDF (.nc) files: IC_cm_t.nc, IC_cm_sal.nc, IC_cm_cur.nc, OB{S/N/W/E}_cm_t.nc, OB{S/N/W/E}_cm_sal.nc, OB{S/N/W/E}_cm_cur.nc 
 	]]></help>
